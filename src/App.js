@@ -1,24 +1,64 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from "react";
+import { BrowserRouter, Switch } from "react-router-dom";
+import axios from "axios";
+
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Settings from "./pages/Settings/Settings";
+import { ProtectedRoute, RedirectRoute } from "./routes/SpecialRoutes";
+import { AuthContext } from "./store/Auth";
 
 function App() {
+  const { userState, userDispatch } = useContext(AuthContext);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const { data } = await axios(
+          `${process.env.REACT_APP_API_URL}/admin/verify-token`,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
+
+        userDispatch({
+          type: "LOGIN",
+          data: {
+            username: data.username,
+            id: data.id,
+          },
+        });
+      } catch (error) {
+        userDispatch({ type: "LOGOUT" });
+      }
+    };
+
+    checkAuth();
+  }, [userDispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch className="Switch">
+          <ProtectedRoute
+            path="/dashboard"
+            loggedIn={userState.loggedIn}
+            component={Dashboard}
+          />
+          <ProtectedRoute
+            path="/dashboard/settings"
+            loggedIn={userState.loggedIn}
+            component={Settings}
+          />
+          <RedirectRoute
+            path="/"
+            loggedIn={userState.loggedIn}
+            component={Login}
+          />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,60 @@
+.SideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  height: 100%;
+  padding-top: 2rem;
+  transform: translateX(0%);
+  transition: transform ease 250ms;
+  background-color: var(--clr-fg);
+  z-index: 200;
+}
+
+.sidebar-container {
+  width: 100%;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: var(--clr-txt-primary);
+}
+
+.sidebar-container:hover {
+  opacity: .8;
+}
+
+.sidebar-container.active {
+  background-color: var(--clr-hover);
+  color: var(--clr-txt-primary);
+  position: relative;
+}
+
+.sidebar-container p {
+  margin-left: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.username-container {
+  color: var(--clr-txt-primary);
+}
+
+@media (max-width: 1600px) {
+  .SideBar {
+    width: 25%;
+    transform: translateX(-125%);
+    position: absolute;
+  }
+  .active {
+    transform: translateX(0%);
+  }
+  .sidebar-container {
+    padding: .5rem 1rem;
+  }
+}

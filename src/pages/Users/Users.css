@@ -1,0 +1,12 @@
+.Users {
+  width: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.users-top {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+}
