@@ -45,7 +45,7 @@ a {
   color: var(--clr-txt-primary);
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
   .SideBar {
     width: 25%;
     transform: translateX(-125%);

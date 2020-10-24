@@ -66,20 +66,27 @@
 .title {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   color: var(--clr-contrast);
   background-color: var(--clr-hover);
-  padding: 1rem .5rem;
+  padding: 1.2rem .5rem;
   font-weight: 700;
   color: var(--clr-txt-primary);
 }
 
+.center {
+  justify-content: center;
+}
+
 .form-message {
   color: white;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
   font-size: .75rem;
-  padding: .5rem;
   white-space: pre;
+  transition: opacity 250ms ease-out;
 }
 
 .primary-btn {
@@ -115,6 +122,7 @@ h4 {
 
 .label {
   margin-bottom: .5rem;
+  font-size: .7em;
   font-weight: 700;
   color: var(--clr-txt-secondary);
 }
@@ -268,12 +276,6 @@ select {
 }
 
 @media (max-width: 1200px) {
-  /* .controls {
-    flex-direction: column;
-  } */
-  /* .controls div {
-    margin-top: 1rem;
-  } */
   .control-container {
     border: none;
   }

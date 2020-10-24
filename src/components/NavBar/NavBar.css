@@ -32,6 +32,11 @@
   display: none !important;
 }
 
+.logo {
+  margin: 0 .5rem;
+  color: var(--clr-primary);
+}
+
 .username-container {
   position: relative;
   cursor: pointer;
@@ -55,5 +60,6 @@
 @media (max-width: 1600px) {
   .sidebar-toggle {
     display: block !important;
+    color: var(--clr-txt-primary) !important;
   }
 }

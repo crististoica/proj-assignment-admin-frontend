@@ -48,7 +48,6 @@ const Login = () => {
       });
       setLoading(false);
     } catch (error) {
-      console.log(error.response.data.message);
       setError(error.response.data.message);
       setLoading(false);
     }
@@ -79,9 +78,13 @@ const Login = () => {
 
   return (
     <form className="Login" onSubmit={handleFormSubmit}>
+      <div className="title center">
+        <h3>Login</h3>
+      </div>
       <div
         className="error"
         style={{
+          marginTop: "1rem",
           opacity: error ? 1 : 0,
         }}
       >

@@ -116,19 +116,28 @@ const AddUser = ({ show, setShow }) => {
     setGroup(() => groupRef.current.value);
   }, [dropdownGroups]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage("");
+      setError("");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [error, message]);
+
   return (
     <div className={show ? "Add-User Add-User-active" : "Add-User"}>
       <div className="close-modal" onClick={handleShow}>
         X
       </div>
       <form onSubmit={(e) => e.preventDefault()}>
-        <div className="title">
+        <div className="title title-flex-end">
           <h3>Add User</h3>
           {/* success message */}
           <div
             className="form-message"
             style={{
-              display: message ? "block" : "none",
+              opacity: message ? 1 : 0,
               backgroundColor: "#4EBC5E",
             }}
           >
@@ -138,7 +147,7 @@ const AddUser = ({ show, setShow }) => {
           <div
             className="form-message"
             style={{
-              display: error ? "block" : "none",
+              opacity: error ? 1 : 0,
               backgroundColor: "#DF2935",
             }}
           >

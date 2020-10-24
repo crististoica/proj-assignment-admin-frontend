@@ -211,7 +211,7 @@ const Settings = () => {
             <p>Your saved themes</p>
             <p>Refresh the page after setting your theme</p>
           </div>
-          {savedThemes.length > 0 ? (
+          {savedThemes ? (
             savedThemes.map((theme, index) => {
               return (
                 <SavedTheme
@@ -238,7 +238,7 @@ const Settings = () => {
           <div className="confirmation-message">
             <p>
               <WarningIcon style={{ marginRight: "1rem" }} />
-              Are you sure you want to delete this entry ?
+              Are you sure you want to set the default theme ?
             </p>
             <div className="btn-group">
               <button
@@ -266,7 +266,8 @@ const Settings = () => {
 
 const SavedTheme = ({ colors, deleteFavouriteTheme, applyFavouriteTheme }) => {
   const parsedTheme = JSON.parse(colors);
-
+  console.log(parsedTheme);
+  console.log(colors);
   return (
     <>
       <div className="saved-theme">

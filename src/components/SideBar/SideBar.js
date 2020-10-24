@@ -21,9 +21,9 @@ const SideBar = (props) => {
         <PeopleIcon />
         <p>Users</p>
       </NavLink>
-      <NavLink to="/dashboard/assignments" className="sidebar-container">
+      <NavLink to="/dashboard/projects" className="sidebar-container">
         <AssignmentIcon />
-        <p>Assignments</p>
+        <p>Projects</p>
       </NavLink>
       <NavLink to="/dashboard/settings" className="sidebar-container">
         <SettingsIcon />
